@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nikhil Choudhary — Creative Portfolio</title>
+  <meta name="description" content="Nikhil Choudhary is a multidisciplinary creative making brands, images and stories with character." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4efe6;
+      --surface: #ffffff;
+      --ink: #15130f;
+      --muted: #6e675c;
+      --accent: #e4572e;
+      --accent-2: #f7b32b;
+      --accent-3: #2d6cdf;
+      --line: rgba(21, 19, 15, 0.12);
+      --radius: 20px;
+      --max: 1140px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    ::selection { background: var(--accent-2); color: var(--ink); }
+
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: radial-gradient(rgba(21,19,15,.08) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 500; letter-spacing: -0.025em; }
+    em { font-style: italic; font-weight: 300; }
+
+    .wrap { width: min(var(--max), 100% - 2.5rem); margin-inline: auto; }
+
+    /* ---------- Nav ---------- */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(14px);
+      background: rgba(244, 239, 230, 0.75);
+      border-bottom: 1px solid var(--line);
+    }
+    nav { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+    .logo { font-family: "Fraunces", serif; font-size: 1.3rem; font-style: italic; }
+    .logo span { color: var(--accent); }
+    nav ul { display: flex; gap: 2rem; list-style: none; }
+    nav ul a { font-size: 0.95rem; color: var(--muted); transition: color .2s; }
+    nav ul a:hover { color: var(--ink); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .8rem 1.4rem; border-radius: 999px;
+      background: var(--ink); color: var(--bg); font-weight: 600; font-size: .95rem;
+      border: 1px solid var(--ink);
+      transition: transform .2s, background .2s, color .2s;
+    }
+    .btn:hover { transform: translateY(-2px); background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn.ghost:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+    /* ---------- Hero ---------- */
+    .hero { position: relative; padding: clamp(5rem, 11vw, 8.5rem) 0 clamp(3rem, 6vw, 5rem); }
+    .hero .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .14em;
+      margin-bottom: 1.5rem;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--accent); }
+    .hero h1 { font-size: clamp(2.9rem, 7vw, 5.6rem); line-height: 1.0; }
+    .hero h1 em { color: var(--accent); }
+    .hero h1 .u {
+      background: linear-gradient(transparent 62%, var(--accent-2) 62%, var(--accent-2) 92%, transparent 92%);
+    }
+    .hero p { margin-top: 1.75rem; max-width: 48ch; font-size: clamp(1.05rem, 1.5vw, 1.2rem); color: var(--muted); }
+    .hero .actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2.5rem; }
+
+    /* Hero composition: a little abstract collage */
+    .collage { position: relative; aspect-ratio: 1; }
+    .collage > * { position: absolute; border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); }
+    .collage .c1 { inset: 8% auto auto 6%; width: 52%; aspect-ratio: 1; border-radius: 50%; background: var(--accent); animation: float 7s ease-in-out infinite; }
+    .collage .c2 { inset: auto 6% 8% auto; width: 50%; aspect-ratio: 1; background: var(--accent-2); border-radius: 50% 0 50% 0; animation: float 9s ease-in-out infinite reverse; }
+    .collage .c3 { inset: 2% 10% auto auto; width: 30%; aspect-ratio: 1; background: var(--accent-3); border-radius: 0 50% 50% 50%; animation: float 8s ease-in-out infinite 1s; }
+    .collage .c4 { inset: auto auto 4% 4%; width: 26%; height: 26%; background: var(--surface); border-radius: 50%; display: grid; place-items: center; font-family: "Fraunces", serif; font-style: italic; font-size: 1.1rem; }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-12px) rotate(2deg); } }
+
+    .marquee {
+      border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink);
+      background: var(--ink); color: var(--bg);
+      padding: .9rem 0; overflow: hidden; white-space: nowrap;
+      font-family: "Fraunces", serif; font-size: 1.15rem; font-style: italic;
+    }
+    .marquee div { display: inline-block; animation: scroll 30s linear infinite; }
+    .marquee span { margin-right: 3rem; }
+    .marquee span::after { content: "✦"; margin-left: 3rem; color: var(--accent-2); font-style: normal; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ---------- Sections ---------- */
+    section { padding: clamp(4rem, 9vw, 7rem) 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; margin-bottom: 3rem; }
+    .section-head h2 { font-size: clamp(2.1rem, 4.5vw, 3.4rem); line-height: 1.05; }
+    .section-head p { color: var(--muted); max-width: 40ch; }
+    .num { font-family: "Fraunces", serif; font-style: italic; color: var(--accent); font-size: .9em; margin-right: .5rem; }
+
+    /* Work grid */
+    .grid { display: grid; gap: 1.6rem; grid-template-columns: repeat(2, 1fr); }
+    .card {
+      position: relative; border-radius: var(--radius); overflow: hidden;
+      background: var(--surface); border: 2px solid var(--ink);
+      box-shadow: 0 0 0 var(--ink);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .card:hover { transform: translate(-4px, -4px); box-shadow: 8px 8px 0 var(--ink); }
+    .card .thumb { aspect-ratio: 4 / 3; position: relative; overflow: hidden; border-bottom: 2px solid var(--ink); }
+    .card .thumb::after {
+      content: attr(data-n); position: absolute; right: 1rem; bottom: .6rem;
+      font-family: "Fraunces", serif; font-style: italic; font-size: 4rem; line-height: 1; color: rgba(255,255,255,.55);
+    }
+    .t1 { background: var(--accent); }
+    .t1::before { content: ""; position: absolute; width: 60%; aspect-ratio: 1; border-radius: 50%; background: var(--accent-2); left: -10%; top: 20%; }
+    .t2 { background: var(--accent-2); }
+    .t2::before { content: ""; position: absolute; inset: 15% 40% 15% 15%; background: var(--accent-3); border-radius: 50% 50% 0 0; }
+    .t3 { background: var(--accent-3); }
+    .t3::before { content: ""; position: absolute; inset: 25% 10% auto 10%; height: 50%; background: repeating-linear-gradient(90deg, var(--bg) 0 14px, transparent 14px 28px); }
+    .t4 { background: var(--ink); }
+    .t4::before { content: ""; position: absolute; width: 45%; aspect-ratio: 1; background: var(--accent); right: 15%; top: 15%; border-radius: 0 50% 50% 50%; transform: rotate(45deg); }
+    .card .body { padding: 1.4rem 1.5rem 1.6rem; display: grid; grid-template-columns: 1fr auto; gap: .5rem 1rem; align-items: start; }
+    .card .tag { grid-column: 1 / -1; font-size: .75rem; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); font-weight: 600; }
+    .card h3 { font-size: 1.55rem; }
+    .card .arrow { font-size: 1.4rem; transition: transform .3s; }
+    .card:hover .arrow { transform: translate(4px, -4px); }
+    .card p { grid-column: 1 / -1; color: var(--muted); font-size: .97rem; }
+
+    /* Process */
+    .process { background: var(--surface); border-block: 2px solid var(--ink); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; counter-reset: step; }
+    .step { position: relative; padding-top: 1.5rem; border-top: 2px solid var(--ink); }
+    .step::before {
+      counter-increment: step; content: "0" counter(step);
+      font-family: "Fraunces", serif; font-style: italic; color: var(--accent); font-size: 1.2rem;
+    }
+    .step h3 { font-size: 1.4rem; margin: .4rem 0 .5rem; }
+    .step p { color: var(--muted); font-size: .95rem; }
+
+    /* About */
+    .about .wrap { display: grid; gap: 4rem; grid-template-columns: 1fr 1.2fr; align-items: center; }
+    .about h2 { font-size: clamp(2.1rem, 4.5vw, 3.4rem); line-height: 1.05; margin-bottom: 1.25rem; }
+    .about h2 em { color: var(--accent); }
+    .about p { color: var(--muted); margin-bottom: 1rem; font-size: 1.05rem; }
+    .skills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+    .skills span { padding: .45rem .95rem; border: 2px solid var(--ink); border-radius: 999px; font-size: .85rem; font-weight: 500; background: var(--surface); }
+    .portrait {
+      position: relative; aspect-ratio: 4 / 5; border-radius: var(--radius);
+      border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--accent);
+      background:
+        radial-gradient(circle at 70% 25%, var(--accent-2) 0 22%, transparent 23%),
+        radial-gradient(circle at 30% 75%, var(--accent-3) 0 18%, transparent 19%),
+        var(--surface);
+      display: grid; place-items: center; color: var(--muted); font-size: .9rem;
+    }
+    .portrait .sticker {
+      position: absolute; top: -1.2rem; right: -1.2rem; width: 96px; height: 96px; border-radius: 50%;
+      background: var(--ink); color: var(--bg); display: grid; place-items: center; text-align: center;
+      font-family: "Fraunces", serif; font-style: italic; font-size: .85rem; line-height: 1.1; padding: .5rem;
+      animation: spin 18s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Contact */
+    .contact { text-align: center; }
+    .contact h2 { font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: 1.0; }
+    .contact h2 em { color: var(--accent); }
+    .contact p { color: var(--muted); margin: 1.5rem auto 2.5rem; max-width: 46ch; font-size: 1.05rem; }
+    .contact .email {
+      display: inline-block; font-family: "Fraunces", serif; font-size: clamp(1.3rem, 3vw, 2.2rem);
+      padding: .4rem 1rem; border: 2px solid var(--ink); border-radius: 999px; background: var(--surface);
+      box-shadow: 6px 6px 0 var(--ink); transition: transform .2s, box-shadow .2s;
+    }
+    .contact .email:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 var(--accent); }
+    .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; margin-top: 2.75rem; }
+    .socials a { color: var(--muted); font-size: .95rem; font-weight: 500; }
+    .socials a:hover { color: var(--accent); }
+
+    footer { border-top: 2px solid var(--ink); padding: 2rem 0; font-size: .85rem; color: var(--muted); }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .steps { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 760px) {
+      nav ul { display: none; }
+      .hero .wrap { grid-template-columns: 1fr; }
+      .collage { max-width: 320px; margin-inline: auto; }
+      .section-head { flex-direction: column; align-items: flex-start; }
+      .grid { grid-template-columns: 1fr; }
+      .about .wrap { grid-template-columns: 1fr; gap: 3rem; }
+      .portrait { order: -1; max-width: 340px; }
+    }
+    @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee div, .collage > *, .portrait .sticker { animation: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="wrap">
+      <a class="logo" href="#">nikhil<span>.</span></a>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="btn" href="#contact">Say hello</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <p class="eyebrow">Multidisciplinary creative</p>
+          <h1>Making <em>bold</em> ideas <span class="u">impossible</span> to ignore.</h1>
+          <p>I'm Nikhil. I design brands, draw pictures, and shape stories for people who want their work to feel like something, not just look like something.</p>
+          <div class="actions">
+            <a class="btn" href="#work">See the work ↓</a>
+            <a class="btn ghost" href="#about">Who's Nikhil?</a>
+          </div>
+        </div>
+        <div class="collage" aria-hidden="true">
+          <div class="c1"></div>
+          <div class="c2"></div>
+          <div class="c3"></div>
+          <div class="c4">hi ✦</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div>
+        <span>Brand identity</span><span>Illustration</span><span>Art direction</span><span>Motion</span><span>Editorial</span><span>Photography</span><span>Type</span>
+        <span>Brand identity</span><span>Illustration</span><span>Art direction</span><span>Motion</span><span>Editorial</span><span>Photography</span><span>Type</span>
+      </div>
+    </div>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2><span class="num">01</span>Selected work</h2>
+          <p>Four projects that show how I think. Each one started with a question and ended with something worth keeping.</p>
+        </div>
+        <div class="grid">
+          <a class="card reveal" href="#">
+            <div class="thumb t1" data-n="01"></div>
+            <div class="body">
+              <div class="tag">Brand identity</div>
+              <h3>Sunday Press</h3>
+              <span class="arrow">↗</span>
+              <p>A warm, type-led identity for an independent print studio that wanted to feel handmade without feeling small.</p>
+            </div>
+          </a>
+          <a class="card reveal" href="#">
+            <div class="thumb t2" data-n="02"></div>
+            <div class="body">
+              <div class="tag">Illustration</div>
+              <h3>Field Notes Series</h3>
+              <span class="arrow">↗</span>
+              <p>Twelve editorial illustrations about everyday rituals, drawn with a limited palette and a lot of patience.</p>
+            </div>
+          </a>
+          <a class="card reveal" href="#">
+            <div class="thumb t3" data-n="03"></div>
+            <div class="body">
+              <div class="tag">Art direction</div>
+              <h3>Loud Quiet Campaign</h3>
+              <span class="arrow">↗</span>
+              <p>Concept, styling and photography direction for a launch that needed to whisper and shout at the same time.</p>
+            </div>
+          </a>
+          <a class="card reveal" href="#">
+            <div class="thumb t4" data-n="04"></div>
+            <div class="body">
+              <div class="tag">Motion</div>
+              <h3>Shapes in Motion</h3>
+              <span class="arrow">↗</span>
+              <p>A playful animated system of geometric characters built to flex across social, web and stage.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="process">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2><span class="num">02</span>How I work</h2>
+          <p>Curiosity first, craft always. A simple rhythm that leaves room for surprise.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <h3>Listen</h3>
+            <p>I start by asking a lot of questions. The best ideas usually hide in the answers you didn't expect.</p>
+          </div>
+          <div class="step reveal">
+            <h3>Wander</h3>
+            <p>Sketches, references, bad ideas on purpose. This is where the project finds its personality.</p>
+          </div>
+          <div class="step reveal">
+            <h3>Make</h3>
+            <p>Shaping the strongest direction with care, from the big gesture down to the smallest detail.</p>
+          </div>
+          <div class="step reveal">
+            <h3>Polish</h3>
+            <p>Testing it in the real world, refining, and handing over something that's ready to live.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="wrap">
+        <div class="portrait reveal">
+          Your photo here
+          <div class="sticker">open to<br>new work</div>
+        </div>
+        <div class="reveal">
+          <h2>Hello, I'm <em>Nikhil.</em></h2>
+          <p>I'm a creative who lives in the space between art and purpose. I've worked with small studios, independent brands, and plenty of my own experiments, always chasing the moment an idea clicks into shape.</p>
+          <p>I believe good work should be generous: clear enough to understand, strange enough to remember. When I'm not designing, I'm sketching, collecting typefaces, or wandering around with a camera.</p>
+          <div class="skills">
+            <span>Figma</span><span>Illustrator</span><span>Photoshop</span><span>After Effects</span><span>Procreate</span><span>Typography</span><span>Storytelling</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap reveal">
+        <h2>Let's make something <em>worth remembering.</em></h2>
+        <p>Open to freelance projects, collaborations and good conversations. Tell me what you're dreaming about.</p>
+        <a class="email" href="mailto:hello@example.com">hello@example.com</a>
+        <div class="socials">
+          <a href="#">Instagram</a>
+          <a href="#">Dribbble</a>
+          <a href="#">Behance</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year"></span> Nikhil Choudhary</span>
+      <span>Made by hand, with a little bit of code.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
